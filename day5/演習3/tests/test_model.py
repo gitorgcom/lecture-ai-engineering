@@ -172,7 +172,8 @@ def test_model_reproducibility(sample_data, preprocessor):
         predictions1, predictions2
     ), "モデルの予測結果に再現性がありません"
 
- # 追加
+
+# 追加
 def test_model_performance_regression(sample_data, preprocessor, train_model):
     """
     過去モデルと新モデルの精度比較
@@ -196,4 +197,6 @@ def test_model_performance_regression(sample_data, preprocessor, train_model):
     new_acc = accuracy_score(y_test, new_model.predict(X_test))
 
     # 過去モデルと比較、新モデルの精度が劣化していないことを確認
-    assert new_acc >= old_acc, f"モデルの性能が劣化しています。過去モデル: {old_acc}, 新モデル: {new_acc}"
+    assert (
+        new_acc >= old_acc
+    ), f"モデルの性能が劣化しています。過去モデル: {old_acc}, 新モデル: {new_acc}"
